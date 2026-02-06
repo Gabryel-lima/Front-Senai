@@ -1,0 +1,52 @@
+.click-burst-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg,#0f172a 0%, #001219 100%);
+  color: #fff;
+  cursor: crosshair;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cb-instructions {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cb-explosion {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.2);
+  background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0.6) 10%, rgba(255,255,255,0) 60%);
+  animation: cb-explode 600ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+@keyframes cb-explode {
+  0% { opacity:1; transform: translate(-50%,-50%) scale(0.2); }
+  100% { opacity:0; transform: translate(-50%,-50%) scale(6); }
+}
+
+.cb-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: cb-fly 900ms cubic-bezier(.17,.67,.3,1) forwards;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+}
+
+@keyframes cb-fly {
+  to {
+    transform: translate(calc(var(--dx) - 50%), calc(var(--dy) - 50%)) scale(0.3);
+    opacity: 0;
+  }
+}
